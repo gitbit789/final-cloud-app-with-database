@@ -72,7 +72,7 @@ def check_if_enrolled(user, course):
 
 # CourseListView
 class CourseListView(generic.ListView):
-    template_name = 'onlinecourse/course_list_bootstrap.html'
+    template_name = 'onlinecourse/course_list.html'
     context_object_name = 'course_list'
 
     def get_queryset(self):
@@ -86,7 +86,7 @@ class CourseListView(generic.ListView):
 
 class CourseDetailView(generic.DetailView):
     model = Course
-    template_name = 'onlinecourse/course_detail_bootstrap.html'
+    template_name = 'onlinecourse/course_detail.html'
 
 
 def enroll(request, course_id):
