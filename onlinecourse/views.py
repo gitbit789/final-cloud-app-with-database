@@ -83,10 +83,12 @@ class CourseListView(generic.ListView):
                 course.is_enrolled = check_if_enrolled(user, course)
         return courses
 
+# CourseDetailsView
 
-class CourseDetailView(generic.DetailView):
+class CourseDetailsView(generic.DetailView):
     model = Course
     template_name = 'onlinecourse/course_detail.html'
+    context_object_name = "course_details"
 
 
 def enroll(request, course_id):
