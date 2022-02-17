@@ -91,6 +91,8 @@ class CourseDetailsView(generic.DetailView):
     context_object_name = "course_details"
 
 
+path('<int:course_id>/enroll/', views.enroll, name='enroll'),
+
 def enroll(request, course_id):
     course = get_object_or_404(Course, pk=course_id)
     user = request.user
