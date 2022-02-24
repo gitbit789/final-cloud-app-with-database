@@ -16,7 +16,7 @@ logger = logging.getLogger(__name__)
 def registration_request(request):
     context = {}
     if request.method == 'GET':
-        return render(request, 'onlinecourse/user_registration_bootstrap.html', context)
+        return render(request, 'onlinecourse/user_registration.html', context)
     elif request.method == 'POST':
         # Check if user exists
         username = request.POST['username']
@@ -33,10 +33,10 @@ def registration_request(request):
             user = User.objects.create_user(username=username, first_name=first_name, last_name=last_name,
                                             password=password)
             login(request, user)
-            return redirect("onlinecourse:index")
+            return redirect("onlinecourse:index.html")
         else:
             context['message'] = "User already exists."
-            return render(request, 'onlinecourse/user_registration_bootstrap.html', context)
+            return render(request, 'onlinecourse/user_registration.html', context)
 
 
 def login_request(request):
@@ -50,9 +50,9 @@ def login_request(request):
             return redirect('onlinecourse:index')
         else:
             context['message'] = "Invalid username or password."
-            return render(request, 'onlinecourse/user_login_bootstrap.html', context)
+            return render(request, 'onlinecourse/user_login.html', context)
     else:
-        return render(request, 'onlinecourse/user_login_bootstrap.html', context)
+        return render(request, 'onlinecourse/user_login.html', context)
 
 
 def logout_request(request):
@@ -155,7 +155,7 @@ def show_exam_result(request, course_id, submission_id):
     
     return render(
         request,
-        'onlinecourse/exam_result_bootstrap.html',
+        'onlinecourse/exam_result.html',
         {"course":course, "choices":choices,"mark":mark, 
             "total_mark": total_mark, 
             "submission": submission,
