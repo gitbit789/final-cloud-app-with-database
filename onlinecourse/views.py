@@ -47,7 +47,7 @@ def login_request(request):
         user = authenticate(username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('onlinecourse:index')
+            return redirect('onlinecourse:index.html')
         else:
             context['message'] = "Invalid username or password."
             return render(request, 'onlinecourse/user_login.html', context)
@@ -57,7 +57,7 @@ def login_request(request):
 
 def logout_request(request):
     logout(request)
-    return redirect('onlinecourse:index')
+    return redirect('onlinecourse:index.html')
 
 
 def check_if_enrolled(user, course):
